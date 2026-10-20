@@ -15,17 +15,17 @@
     <div class="petals" id="petals" aria-hidden="true"></div>
     <header class="header">
       <a class="brand" href="#" aria-label="Gửi Ấy Vy, về đầu trang"><span class="brand-flower">✿</span> gửi Ấy Vy<span class="brand-dot">.</span></a>
-      <nav aria-label="Điều hướng"><a href="#dieu-nho">Những điều nhỏ xinh</a><a href="#buc-thu">Lời nhắn cho Ấy Vy</a></nav>
+      <span class="journey-note">một món quà nhỏ, mở từng chút thôi ♡</span>
       <button class="share-button" id="share-button"><span class="qr-icon" aria-hidden="true">▦</span> Gửi chút yêu thương <span aria-hidden="true">↗</span></button>
     </header>
 
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
+    <main id="journey">
+      <section class="hero step" data-step="0" aria-labelledby="hero-title">
         <div class="hero-copy">
           <div class="eyebrow"><span></span> MỘT NGÀY ĐẶC BIỆT, CHO MỘT NGƯỜI ĐẶC BIỆT</div>
           <h1 id="hero-title">Tháng Mười có hoa,<br />còn hôm nay<br />có <em>Ấy Vy.</em><span class="title-spark" aria-hidden="true">✳</span></h1>
           <p class="hero-description">Một chút dịu dàng, một chút đáng yêu.<br />Và thật nhiều lời chúc, dành riêng cho Ấy Vy ngày 20/10.</p>
-          <button class="primary-button open-letter">Mở lời nhắn cho Ấy Vy <span aria-hidden="true">↗</span></button>
+          <button class="primary-button" data-go="1">Mở món quà nhỏ <span aria-hidden="true">↗</span></button>
           <div class="handwritten hero-note">có một điều dễ thương đang chờ đấy <span aria-hidden="true">⤴</span></div>
         </div>
 
@@ -43,18 +43,23 @@
         </div>
       </section>
 
-      <div class="ribbon" aria-hidden="true"><span>một ngày thật xinh</span><span>✳</span><span>một nụ cười thật tươi</span><span>✳</span><span>một trái tim được yêu thương</span><span>✳</span><span>và một Ấy Vy thật hạnh phúc</span><span>✳</span></div>
 
-      <section class="little-things" id="dieu-nho" aria-labelledby="things-title">
-        <div class="section-heading"><div><div class="eyebrow">GÓI GHÉM MỘT CHÚT YÊU THƯƠNG</div><h2 id="things-title">Những điều nhỏ, <em>dành cho Ấy Vy.</em></h2></div><span class="heading-doodle" aria-hidden="true">♡</span></div>
-        <div class="gift-grid">
-          <article class="gift-card calendar-card">
+      <section class="step simple-step day-step" data-step="1" hidden aria-labelledby="day-title">
+        <div class="eyebrow">NGÀY ẤY VY XỨNG ĐÁNG ĐƯỢC YÊU THƯƠNG</div>
+        <h2 id="day-title">Hôm nay, <em>là ngày của Ấy Vy.</em></h2>
+        <p class="step-intro">Khoanh một ngày thật xinh, gửi một chút dịu dàng.</p>
+                  <article class="gift-card calendar-card">
             <div class="card-kicker"><span class="small-icon" aria-hidden="true">▦</span> MỘT NGÀY ĐỂ NHỚ</div>
             <div class="calendar-title"><h3>Tháng 10</h3><span>2026</span></div>
             <div class="calendar" role="table" aria-label="Lịch tháng 10 năm 2026, ngày 20 là Ngày Phụ nữ Việt Nam" id="calendar"></div>
             <div class="calendar-caption"><span aria-hidden="true">♡</span> Ngày của Ấy Vy. Và những điều dịu dàng.</div>
           </article>
-          <article class="gift-card letter-card" id="buc-thu">
+        <button class="primary-button" data-go="2">Có một bức thư đang chờ <span aria-hidden="true">↗</span></button>
+      </section>
+      <section class="step simple-step envelope-step" data-step="2" hidden aria-labelledby="envelope-title">
+        <div class="eyebrow">VÀI ĐIỀU MUỐN NÓI, CHỈ VỚI ẤY VY</div>
+        <h2 id="envelope-title">Một bức thư, <em>một chút thương.</em></h2>
+                  <article class="gift-card letter-card" id="buc-thu">
             <div class="card-kicker"><span class="small-icon" aria-hidden="true">♡</span> CÓ MỘT BỨC THƯ GỬI ẤY VY</div>
             <button class="envelope-button open-letter" aria-label="Bấm để mở bức thư dành cho Ấy Vy">
               <span class="envelope"><span class="letter-peek">gửi Ấy Vy, với yêu thương ♡</span><span class="envelope-back"></span><span class="envelope-fold"></span><span class="wax-seal">♡</span></span>
@@ -64,35 +69,16 @@
             <p>Có những điều nhỏ thôi, nhưng muốn Ấy Vy biết.</p>
             <button class="text-button open-letter">Chạm để mở thư <span aria-hidden="true">↗</span></button>
           </article>
-          <article class="gift-card cat-card">
-            <div class="card-kicker"><span class="small-icon" aria-hidden="true">✳</span> TRẠM SẠC NĂNG LƯỢNG</div>
-            <button id="cat-button" class="cat-button" aria-label="Chạm vào mèo để nhận một lời chúc"><span id="gift-cat" aria-hidden="true"></span><span class="cat-heart" aria-hidden="true">♡</span></button>
-            <h3 id="cat-wish" aria-live="polite">Gửi Ấy Vy một chiếc ôm!</h3>
-            <p id="cat-description">Mệt thì nghỉ một chút, có mèo ở đây rồi.</p>
-            <button class="text-button" id="hug-button">Nhận thêm chút yêu thương <span aria-hidden="true">↗</span></button>
-          </article>
-        </div>
+        <div class="letter-companion">
+  <button id="cat-button" class="cat-button" aria-label="Chạm vào mèo để nhận một lời chúc"><span id="gift-cat" aria-hidden="true"></span><span class="cat-heart" aria-hidden="true">♡</span></button>
+  <p id="cat-wish" aria-live="polite">Gửi Ấy Vy một chiếc ôm!</p>
+  <p id="cat-description">Mệt thì nghỉ một chút, có mèo ở đây rồi.</p>
+</div>
       </section>
-      <section class="closing"><span aria-hidden="true">✿</span><p>Chúc Ấy Vy luôn rực rỡ theo cách của riêng mình.</p><span class="handwritten">Hôm nay, và cả những ngày sau nữa.</span></section>
-    </main>
-    <footer><a class="brand" href="#">gửi Ấy Vy<span class="brand-dot">.</span></a><span>Một góc nhỏ, đầy yêu thương.</span><span>made by m4n <span class="footer-heart">♡</span> · 20.10.2026</span></footer>
-
-    <dialog id="letter-dialog" class="letter-dialog" aria-labelledby="letter-title">
-      <button class="close-button" data-close="letter-dialog" aria-label="Đóng thư">×</button>
-      <div class="letter-content"><div class="letter-topline"><span>20 THÁNG 10, 2026</span><span>♡</span></div>
-        <span class="letter-flower" aria-hidden="true">✿</span><h2 id="letter-title">Gửi Ấy Vy <em>thương mến,</em></h2>
-        <p>Hôm nay là 20/10, có một bó hoa nhỏ và vài lời thật lòng muốn gửi đến Ấy Vy.</p>
-        <p>Chúc Ấy Vy luôn có thật nhiều niềm vui, có người lắng nghe những câu chuyện không đầu không cuối, có một nơi để trở về và có những ngày bình yên đúng nghĩa.</p>
-        <p>Mong Ấy Vy luôn tự tin với những điều mình chọn, dịu dàng với chính mình hơn một chút, và đừng quên rằng: Ấy Vy xứng đáng được yêu thương, cả trong những ngày chẳng cần phải thật hoàn hảo.</p>
-        <p class="letter-highlight">Cứ cười thật tươi, cứ mơ thật lớn.<br />Mọi điều đẹp đẽ rồi sẽ tìm đến Ấy Vy. ♡</p>
-        <div class="letter-signature"><span>Chúc Ấy Vy một ngày 20/10 thật xinh!</span><span class="handwritten">Từ một người luôn mong Ấy Vy hạnh phúc.</span></div>
-        <button class="primary-button" id="flower-button">Nhận một cơn mưa hoa <span aria-hidden="true">✿</span></button>
-      </div>
-    </dialog>
-    <dialog id="garden-dialog" class="garden-dialog" aria-labelledby="garden-title" aria-describedby="garden-description">
+          <section id="garden-page" class="step garden-page" data-step="3" hidden aria-labelledby="garden-title" aria-describedby="garden-description">
       <div class="garden-scene">
         <button class="garden-back" id="garden-back" aria-label="Trở lại bức thư">← <span>Bức thư của Ấy Vy</span></button>
-        <button class="close-button" data-close="garden-dialog" aria-label="Đóng vườn hoa">×</button>
+        <button class="garden-restart" data-go="0">Xem lại từ đầu ↺</button>
         <div class="garden-sun" aria-hidden="true"></div>
         <div class="garden-cloud cloud-one" aria-hidden="true"></div>
         <div class="garden-cloud cloud-two" aria-hidden="true"></div>
@@ -109,6 +95,31 @@
         <div class="garden-cat" id="garden-cat" aria-hidden="true"></div>
         <div class="garden-rain" id="garden-rain" aria-hidden="true"></div>
         <span class="garden-footnote">cứ thong thả, mèo ngồi đây cùng Ấy Vy ♡</span>
+      </div>
+    </section>
+    </main>
+    <nav class="step-navigation" aria-label="Các trang của món quà">
+      <button id="previous-step" class="step-previous" aria-label="Về trang trước" disabled>← <span>Quay lại</span></button>
+      <div class="step-dots">
+        <button data-go="0" class="step-dot active" aria-label="Trang 1: Lời chào" aria-current="step"><span></span></button>
+        <button data-go="1" class="step-dot" aria-label="Trang 2: Lịch 20 tháng 10"><span></span></button>
+        <button data-go="2" class="step-dot" aria-label="Trang 3: Bức thư"><span></span></button>
+        <button data-go="3" class="step-dot" aria-label="Trang 4: Vườn hoa"><span></span></button>
+      </div>
+      <span class="step-counter" id="step-counter" aria-live="polite">01 / 04</span>
+    </nav>
+    <footer><span>Một góc nhỏ, dành riêng cho Ấy Vy.</span><span>made by m4n <span class="footer-heart">♡</span></span></footer>
+
+    <dialog id="letter-dialog" class="letter-dialog" aria-labelledby="letter-title">
+      <button class="close-button" data-close="letter-dialog" aria-label="Đóng thư">×</button>
+      <div class="letter-content"><div class="letter-topline"><span>20 THÁNG 10, 2026</span><span>♡</span></div>
+        <span class="letter-flower" aria-hidden="true">✿</span><h2 id="letter-title">Gửi Ấy Vy <em>thương mến,</em></h2>
+        <p>Hôm nay là 20/10, có một bó hoa nhỏ và vài lời thật lòng muốn gửi đến Ấy Vy.</p>
+        <p>Chúc Ấy Vy luôn có thật nhiều niềm vui, có người lắng nghe những câu chuyện không đầu không cuối, có một nơi để trở về và có những ngày bình yên đúng nghĩa.</p>
+        <p>Mong Ấy Vy luôn tự tin với những điều mình chọn, dịu dàng với chính mình hơn một chút, và đừng quên rằng: Ấy Vy xứng đáng được yêu thương, cả trong những ngày chẳng cần phải thật hoàn hảo.</p>
+        <p class="letter-highlight">Cứ cười thật tươi, cứ mơ thật lớn.<br />Mọi điều đẹp đẽ rồi sẽ tìm đến Ấy Vy. ♡</p>
+        <div class="letter-signature"><span>Chúc Ấy Vy một ngày 20/10 thật xinh!</span><span class="handwritten">Từ một người luôn mong Ấy Vy hạnh phúc.</span></div>
+        <button class="primary-button" id="flower-button">Nhận một cơn mưa hoa <span aria-hidden="true">✿</span></button>
       </div>
     </dialog>
     <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-title">

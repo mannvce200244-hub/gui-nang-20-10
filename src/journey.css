@@ -1,0 +1,114 @@
+[hidden]{display:none!important}
+body{min-height:100svh;display:flex;flex-direction:column}
+.header{width:90%;margin:0 auto;flex-shrink:0}
+.journey-note{font:italic 14px var(--serif);color:#929780}
+#journey{flex:1;position:relative;width:100%;display:grid;align-items:center}
+.step{width:100%}
+.hero.step{min-height:0;margin:0 auto;padding:35px 0;max-width:1180px;min-width:0}
+.hero.step .hero-art{height:455px}
+.hero.step h1{font-size:clamp(43px,4.4vw,64px)}
+.hero.step .hero-description{margin-bottom:20px}
+.simple-step{max-width:660px;margin:0 auto;padding:28px 20px;text-align:center}
+.simple-step>.eyebrow{justify-content:center;font-size:8px;letter-spacing:1.4px}
+.simple-step>h2{font-size:39px;margin:13px 0}
+.step-intro{font-size:11px;line-height:1.9;color:#8c927e;margin:0 0 22px}
+.day-step .calendar-card{max-width:340px;margin:0 auto 24px;text-align:left;min-height:0;box-shadow:0 8px 30px #5c735209;transform:rotate(-2deg)}
+.day-step .calendar-title{margin-top:17px}
+.day-step .calendar-day{height:30px}
+.day-step .calendar-caption{font-size:8px;justify-content:center}
+.day-step .calendar-day.special:before{inset:0 3px}
+.day-step .primary-button{margin:0}
+.envelope-step .letter-card{max-width:390px;margin:22px auto 0;min-height:0;padding:25px 28px 29px}
+.envelope-step .card-kicker{justify-content:center}
+.envelope-step .envelope-button{height:160px}
+.envelope-step .letter-card h3{font-size:23px}
+.envelope-step .letter-card p{font-size:10px}
+.envelope-step .text-button{font-size:11px}
+.letter-companion{position:relative;margin:16px auto 0;max-width:360px;min-height:78px;padding:17px 0 5px 95px;text-align:left}
+.letter-companion .cat-button{position:absolute;left:0;top:0;width:85px;height:80px;margin:0;padding:0}
+.letter-companion .cat-button svg{width:85px;height:80px}
+.letter-companion .cat-heart{font-size:15px;right:-1px;top:4px}
+.letter-companion p{font-size:10px;line-height:1.8;color:#849078;margin:0}
+.letter-companion #cat-wish{font:italic 16px var(--serif);color:#8d776c;margin-bottom:6px}
+.step-navigation{max-width:1180px;width:86%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:8px 0 17px;color:#8e9780}
+.step-previous{justify-self:start;background:transparent;border:0;font-size:19px;display:flex;align-items:center;gap:9px;padding:10px 0}
+.step-previous span{font-size:10px}
+.step-previous:disabled{visibility:hidden}
+.step-dots{display:flex;justify-content:center;gap:5px}
+.step-dot{border:0;background:transparent;padding:14px 7px;display:grid;place-items:center}
+.step-dot>span{width:6px;height:6px;background:#d6dccb;border-radius:10px;transition:width .4s,background .4s}
+.step-dot.active>span{width:23px;background:#91a27c}
+.step-counter{justify-self:end;font:11px "DM Sans",sans-serif;letter-spacing:2px}
+footer{width:90%;padding:15px 0 18px;margin:0 auto;flex-shrink:0}
+footer>span:last-child{width:auto}
+.step-entering{animation:step-enter .6s cubic-bezier(.2,.75,.2,1) both}
+.step.step-leaving{animation:step-leave .2s ease both;pointer-events:none}
+.step h1:focus,.step h2:focus{outline:none}
+.garden-page{max-width:1100px;height:clamp(500px,calc(100svh - 210px),720px);margin:18px auto;border:1px solid #e0e5d3;border-radius:16px;overflow:hidden;isolation:isolate}
+.garden-page .garden-copy{padding-top:93px}
+.garden-page .garden-copy h2{font-size:43px}
+.garden-page .garden-restart{position:absolute;top:27px;right:25px;z-index:8;border:0;background:#fffdf580;border-radius:30px;padding:11px 15px;font-size:10px;color:#7f8c73}
+.garden-page .garden-rain-button{margin-top:18px}
+.garden-page .garden-footnote{bottom:17px}
+@keyframes step-enter{from{opacity:0;transform:translateY(14px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes step-leave{to{opacity:0;transform:translateY(-9px)}}
+@media(max-width:1280px){.hero.step{width:86%;gap:20px}.garden-page{width:90%}}
+@media(max-width:700px){
+  .header{padding:15px 0;width:90%}
+  .header .brand{font-size:23px}
+  .header .brand-flower{font-size:24px}
+  .header .share-button{font-size:8px;padding:9px;gap:5px}
+  .journey-note{display:none}
+  .hero.step{width:88%;padding:22px 0 10px;gap:0;grid-template-columns:1fr}
+  .hero.step h1{font-size:39px;line-height:1.14;letter-spacing:-1.8px;margin:13px 0 12px}
+  .hero.step h1 em{font-size:1.03em}
+  .hero.step .title-spark{font-size:25px;margin-left:12px}
+  .hero-copy .eyebrow{font-size:5.8px;letter-spacing:.9px}
+  .hero.step .hero-description{font-size:9px;line-height:1.85;margin:10px 0 16px}
+  .hero.step .primary-button{padding:12px 17px}
+  .hero.step .hero-note{display:none}
+  .hero.step .hero-art{height:245px;width:260px;margin-top:13px}
+  .hero.step .flower-card{width:174px;height:209px;padding:8px 8px 0;transform:rotate(6deg)}
+  .hero.step .flower-drawing{height:167px}
+  .hero.step .card-caption{font-size:12px;padding:8px 5px}
+  .hero.step .card-caption span:last-child{font-size:17px}
+  .hero.step .tape{width:65px;height:23px;left:54px;top:-10px}
+  .hero.step .date-sticker{width:72px;height:72px;right:0;top:7px;outline-width:4px}
+  .hero.step .date-sticker strong{font-size:21px}
+  .hero.step .date-sticker>span:first-child{font-size:5px;letter-spacing:2px}
+  .hero.step .date-sticker>span:last-child{font-size:3px;letter-spacing:.5px}
+  .hero.step .cat-sticker{width:80px;left:3px;bottom:2px}
+  .hero.step .cat-sticker svg{height:80px}
+  .hero.step .art-note{font-size:10px;right:0;bottom:-1px}
+  .hero.step .star-one{font-size:25px;left:0;top:9px}
+  .hero.step .star-two{font-size:22px;right:-3px;bottom:53px}
+  .simple-step{padding:24px 20px}
+  .simple-step>.eyebrow{font-size:6px;letter-spacing:1px}
+  .simple-step>h2{font-size:29px;max-width:330px;margin:15px auto}
+  .step-intro{font-size:9px;margin-bottom:22px}
+  .day-step .calendar-card{max-width:306px;padding:21px;margin-bottom:25px}
+  .day-step .calendar-caption{font-size:7px}
+  .envelope-step .letter-card{max-width:320px;margin-top:22px;padding:22px 18px}
+  .envelope-step .card-kicker{font-size:7px}
+  .envelope-step .envelope-button{height:158px}
+  .envelope-step .letter-card h3{font-size:22px}
+  .envelope-step .letter-card p{font-size:9px}
+  .letter-companion{max-width:315px;margin-top:18px}
+  .letter-companion #cat-wish{font-size:14px}
+  .letter-companion p{font-size:8px}
+  .step-navigation{padding:5px 0 10px;width:87%}
+  footer{flex-wrap:nowrap;gap:8px;padding:12px 0 15px;font-size:7px}
+  footer>span:last-child{width:auto;white-space:nowrap;text-align:right;font-size:8px}
+  .garden-page{width:95%;height:calc(100svh - 175px);min-height:510px;margin:12px auto}
+  .garden-page .garden-back{top:16px;left:12px}
+  .garden-page .garden-restart{top:16px;right:12px;font-size:8px;padding:10px}
+  .garden-page .garden-copy{padding:83px 16px 0}
+  .garden-page .garden-copy h2{font-size:32px;margin:14px auto}
+  .garden-page .garden-copy p{font-size:9px}
+  .garden-page .garden-label{font-size:5.5px}
+  .garden-page .garden-rain-button{margin-top:12px}
+  .garden-page .garden-cat{bottom:34px;width:92px;left:calc(50% - 46px)}
+  .garden-page .garden-footnote{font-size:9px;bottom:14px}
+}
+@media(max-width:360px){.hero.step h1{font-size:35px}.header .brand{font-size:21px}.simple-step>h2{font-size:27px}.day-step .calendar-card{padding:18px}.calendar-caption{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.step-entering,.step.step-leaving{animation:none!important}}

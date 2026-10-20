@@ -1,5 +1,6 @@
 import QRCode from 'qrcode';
 import './garden.css';
+import './journey.css';
 
 // Original vector illustrations: no remote image dependencies.
 const cat = `<svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" fill="none">
@@ -138,7 +139,7 @@ document.querySelectorAll('[data-close]').forEach(button => button.addEventListe
 document.querySelectorAll('.open-letter').forEach(button => button.addEventListener('click', () => {
   openDialog(document.querySelector('#letter-dialog'));
 }));
-const gardenDialog = document.querySelector('#garden-dialog');
+const gardenPage = document.querySelector('#garden-page');
 const gardenRain = document.querySelector('#garden-rain');
 document.querySelector('#garden-cat').innerHTML = cat;
 // Deterministic arrangement keeps the little garden balanced on every visit.
@@ -154,9 +155,9 @@ for (let i = 0; i < 27; i++) {
     ${daisy(x, y, scale, colors[i % 4], '#cbb16d', i * 11)}
   </g>`;
 }
-document.querySelector('#garden-flowers').innerHTML = `<svg viewBox="0 0 1000 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">${plants}</svg>`;
+document.querySelector('#garden-flowers').innerHTML = `<svg viewBox="0 0 1000 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">${plants}</svg>`;
 function gardenShower(count = 12) {
-  if (reducedMotion.matches || document.hidden || !gardenDialog.open) return;
+  if (reducedMotion.matches || document.hidden || gardenPage.hidden) return;
   const room = Math.max(0, 65 - gardenRain.childElementCount);
   for (let i = 0; i < Math.min(count, room); i++) {
     const petal = document.createElement('span');
@@ -176,15 +177,13 @@ function stopGardenRain() {
   gardenRain.replaceChildren();
 }
 document.querySelector('#flower-button').addEventListener('click', async () => {
-  await transitionDialog(document.querySelector('#letter-dialog'), gardenDialog);
-  clearInterval(gardenTimer);
-  gardenShower(24);
-  gardenTimer = setInterval(() => gardenShower(7), 2200);
+  if (switchingDialog) return;
+  await transitionDialog(document.querySelector('#letter-dialog'));
+  await goToStep(3);
 });
 document.querySelector('#garden-back').addEventListener('click', () => {
-  transitionDialog(gardenDialog, document.querySelector('#letter-dialog'));
+  goToStep(2);
 });
-gardenDialog.addEventListener('close', stopGardenRain);
 reducedMotion.addEventListener('change', () => {
   if (reducedMotion.matches) gardenRain.replaceChildren();
 });
@@ -212,7 +211,51 @@ function hug() {
   flowerRain(undefined, 12);
 }
 document.querySelector('#cat-button').addEventListener('click', hug);
-document.querySelector('#hug-button').addEventListener('click', hug);
+
+const steps = [...document.querySelectorAll('[data-step]')];
+let currentStep = 0;
+let changingStep = false;
+async function goToStep(index) {
+  if (changingStep || index === currentStep || !steps[index]) return;
+  changingStep = true;
+  const journey = document.querySelector('#journey');
+  const previous = steps[currentStep];
+  journey.setAttribute('aria-busy', 'true');
+  previous.classList.add('step-leaving');
+  if (!reducedMotion.matches) await new Promise(resolve => setTimeout(resolve, 200));
+  stopGardenRain();
+  previous.hidden = true;
+  previous.classList.remove('step-leaving', 'step-entering');
+  currentStep = index;
+  const next = steps[index];
+  next.hidden = false;
+  next.classList.add('step-entering');
+  document.querySelector('#previous-step').disabled = index === 0;
+  document.querySelector('#step-counter').textContent = `0${index + 1} / 04`;
+  document.querySelectorAll('.step-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+    if (i === index) dot.setAttribute('aria-current', 'step');
+    else dot.removeAttribute('aria-current');
+  });
+  const title = next.querySelector('h1,h2');
+  title.setAttribute('tabindex', '-1');
+  title.focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  if (index === 3) {
+    gardenShower(24);
+    gardenTimer = setInterval(() => gardenShower(7), 2200);
+  }
+  journey.removeAttribute('aria-busy');
+  changingStep = false;
+}
+document.querySelectorAll('[data-go]').forEach(button => {
+  button.addEventListener('click', () => goToStep(Number(button.dataset.go)));
+});
+document.querySelector('#previous-step').addEventListener('click', () => goToStep(currentStep - 1));
+document.querySelector('.header .brand').addEventListener('click', event => {
+  event.preventDefault();
+  goToStep(0);
+});
 
 const shareInput = document.querySelector('#share-url');
 const shareStatus = document.querySelector('#share-status');
@@ -288,13 +331,5 @@ document.querySelector('#download-qr').addEventListener('click', async () => {
   link.href = document.querySelector('#qr-canvas').toDataURL('image/png');
   link.click();
   shareStatus.textContent = 'Đã chuẩn bị mã QR để lưu ♡';
-});
-const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-}), { threshold: .12 });
-document.querySelectorAll('.gift-card,.closing').forEach((el, i) => {
-  el.classList.add('reveal');
-  el.style.transitionDelay = `${(i % 3) * 100}ms`;
-  observer.observe(el);
 });
 setTimeout(() => flowerRain(undefined, 9), 800);
