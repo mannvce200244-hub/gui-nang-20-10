@@ -1,4 +1,4 @@
-# Gửi Ấy Vy, tháng Mười
+# Gửi cô gái, tháng Mười
 
 Website chúc mừng ngày Phụ nữ Việt Nam 20/10: bó hoa vẽ SVG, thư bấm mở, mèo tương tác, lịch tháng 10/2026 và một khu vườn với hoa đung đưa, cánh hoa rơi nhẹ. Responsive trên điện thoại và máy tính; có hỗ trợ giảm chuyển động và điều hướng bằng bàn phím.
 

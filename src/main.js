@@ -189,15 +189,15 @@ reducedMotion.addEventListener('change', () => {
 });
 document.querySelector('#garden-rain-button').addEventListener('click', () => {
   gardenShower(22);
-  document.querySelector('#garden-status').textContent = 'Thêm một chút yêu thương, dành riêng cho Ấy Vy.';
+  document.querySelector('#garden-status').textContent = 'Thêm một chút yêu thương, dành riêng cho cô gái.';
 });
 const wishes = [
-  ['Gửi Ấy Vy một chiếc ôm!', 'Mệt thì nghỉ một chút, có mèo ở đây rồi.'],
-  ['Ấy Vy đã làm tốt lắm rồi!', 'Hôm nay nhớ dành một chút dịu dàng cho mình nhé.'],
-  ['Chúc Ấy Vy cười thật nhiều!', 'Nụ cười của Ấy Vy làm ngày thường cũng hóa thật xinh.'],
+  ['Gửi cô gái một chiếc ôm!', 'Mệt thì nghỉ một chút, có mèo ở đây rồi.'],
+  ['Cô gái đã làm tốt lắm rồi!', 'Hôm nay nhớ dành một chút dịu dàng cho mình nhé.'],
+  ['Chúc cô gái cười thật nhiều!', 'Nụ cười của cô gái làm ngày thường cũng hóa thật xinh.'],
   ['Mọi điều tốt đẹp đang đến!', 'Cứ bước theo nhịp của mình, không cần vội đâu.'],
-  ['Ấy Vy xứng đáng được yêu thương!', 'Hôm nay, ngày mai, và cả những ngày sau nữa.'],
-  ['Một ngày 20/10 thật rực rỡ!', 'Hoa xinh, trời đẹp, và Ấy Vy là điều đáng yêu nhất.'],
+  ['Cô gái xứng đáng được yêu thương!', 'Hôm nay, ngày mai, và cả những ngày sau nữa.'],
+  ['Một ngày 20/10 thật rực rỡ!', 'Hoa xinh, trời đẹp, và cô gái là điều đáng yêu nhất.'],
 ];
 let wishIndex = 0;
 function hug() {
@@ -295,7 +295,7 @@ async function updateQr() {
     const local = /^(localhost|127\.|0\.0\.0\.0|192\.168\.|10\.|\[::1\])/.test(host) || /^172\.(1[6-9]|2\d|3[01])\./.test(host);
     document.querySelector('#share-hint').textContent = local
       ? 'Đây là địa chỉ cục bộ. Điện thoại cần dùng cùng Wi-Fi và đường dẫn IP của máy tính. Để gửi từ xa, hãy dùng đường dẫn website đã được đưa lên mạng.'
-      : 'Mã QR mở đường dẫn ở trên. Hãy dùng đường dẫn website đã hoạt động để Ấy Vy có thể nhận quà nhé.';
+      : 'Mã QR mở đường dẫn ở trên. Hãy dùng đường dẫn website đã hoạt động để cô gái có thể nhận quà nhé.';
     return true;
   } catch {
     shareStatus.textContent = 'Chưa tạo được mã QR. Thử dùng một đường dẫn ngắn hơn nhé.';
@@ -317,7 +317,7 @@ document.querySelector('#copy-link').addEventListener('click', async () => {
   if (!await updateQr()) return;
   try {
     await navigator.clipboard.writeText(qrUrl);
-    shareStatus.textContent = 'Đã sao chép đường dẫn. Gửi cho Ấy Vy thôi ♡';
+    shareStatus.textContent = 'Đã sao chép đường dẫn. Gửi cho cô gái thôi ♡';
   } catch {
     shareInput.focus();
     shareInput.select();
@@ -327,7 +327,7 @@ document.querySelector('#copy-link').addEventListener('click', async () => {
 document.querySelector('#download-qr').addEventListener('click', async () => {
   if (!await updateQr()) return;
   const link = document.createElement('a');
-  link.download = 'gui-ay-vy-20-10-QR.png';
+  link.download = 'gui-co-gai-20-10-QR.png';
   link.href = document.querySelector('#qr-canvas').toDataURL('image/png');
   link.click();
   shareStatus.textContent = 'Đã chuẩn bị mã QR để lưu ♡';
