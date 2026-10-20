@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.log
+.npm-cache/
+.local/
+preview*.jpg
+qr-20-10-wifi.png
